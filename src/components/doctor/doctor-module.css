@@ -1,0 +1,148 @@
+.Grid{
+    background-color: #FFFEF9;
+}
+.doctor-img {
+    width: 27%;
+    border-radius: 5%;
+    margin-top: 7%;
+
+}
+.doctor-card {
+    display: flex;
+    justify-content: space-around;
+    
+    
+    
+}
+
+.doctorCard-information{
+
+    color:gray;
+    margin-top: 10%;
+    margin-left: 70%;
+    font-size: 11px;
+    white-space: nowrap;
+    line-height: 1.5;
+
+
+}
+
+.doctorName{
+    color:#0D6240;
+    margin-top: 170px;
+    margin-left: 50%;
+    font-size: 25px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    
+    
+
+}
+
+
+.Doctor-signup {
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+
+
+}
+
+.appointment-button {
+    background-color: #0D6240;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 15px; 
+    padding:5px 30px ;
+    margin-top: 12%;
+    margin-left: 45%;
+
+}
+
+.review-button{
+    background-color: #0D6240;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 15px; 
+    padding:5px 30px ;
+    white-space: nowrap;
+    margin-left: 5%;
+    margin-top: 12%;
+
+
+
+}
+
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12%;
+    margin-left: 20%;
+    align-items: center;
+    background-color: #fffffff7; /* Біла заливка */
+    border: 0.001px solid rgb(200, 200, 200); /* Рамка */
+    padding: 20px; /* Додайте відступ для збільшення візуальної ширини рамки */
+    border-radius: 15px;
+    width: 80%; /* Ширина контейнера більша, ніж поле коментаря */
+    max-width: 650px; /* Максимальна ширина контейнера */
+}
+
+.comment-input {
+    width: 100%; /* Встановлюємо ширину в 100% від ширини батьківського елемента */
+    padding: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    resize: vertical;
+    max-width: 600px; /* Максимальна ширина менша, ніж у .comment-section */
+}
+
+
+.submit-comment-button {
+    background-color: #0D6240;
+    color: white;
+    border: none;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    max-width: 150px;
+    margin-left: 75%;
+
+}
+
+.comments-display {
+    width: 50%;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.comment-item {
+    background-color: #fffffff7;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 40%;
+    border-radius: 10px;
+    word-wrap: break-word;
+    align-items: center;
+    border: 1px solid #ccc;
+
+}
+
+.comment-input-name{
+    font-size: 12px;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 68%;
+    
+
+}

@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Doctor } from './components/doctor/doctors';
+import contents from './content';
+import Rating from './components/rating/Rating';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+export default function App() {
+  return(
+    
+    <div className='App'>
+    <Rating />
+      {contents.map(content => (
+        <Doctor
+        key = {content.id}
+        image = {content.image}
+        name = {content.name}
+        location = {content.location}
+        specialty = {content.specialty}
+        ratings={content.ratings}
+        time ={content.time}
+
+        />
+      ))}
     </div>
-  );
-}
-
-export default App;
+  )
+};

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './doctor-module.css';
+import './doctor-module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '@fortawesome/fontawesome-free/css/all.css'; 
 import { faLocationDot, faStethoscope, faStar, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -9,87 +9,85 @@ export function Doctor({ id, name, specialty, location, ratings, image, time }) 
     const [comments, setComments] = useState([]);
     const [commentText, setCommentText] = useState('');
     const [commenterName, setCommenterName] = useState('');
-    const [commentRating, setCommentRating] = useState(0); // Змінено на 0 для ініціалізації
+    const [commentRating, setCommentRating] = useState(0);
 
     const handleAppointmentClick = () => {
         alert("Функція запису на прийом");
     };
+
+    const nameParts = name.split(' ');
+    const lastName = nameParts[0];
+    const firstNameAndPatronymic = nameParts.slice(1).join(' ');
 
     const handleRate = (rateValue) => {
         setCommentRating(rateValue);
     };
 
     const handleCommentSubmit = () => {
-        if (!commentText.trim() || !commenterName.trim() || commentRating === 0) return;
+        if (!commentText.trim()) return;
+      
         const newComment = {
             text: commentText,
-            name: commenterName,
+            name: commenterName.trim() ? commenterName : "Анонім",
             rating: commentRating,
         };
         setComments([...comments, newComment]);
-  setCommentText('');
-  setCommenterName('');
-  setCommentRating(0);
+        setCommentText('');
+        setCommenterName('');
+        setCommentRating(0);
     };
 
     return (
-        <div className='Grid'>
-            <div key={id} className='doctor-card'>
-                <div className="doctor-text-container">
-                    <h3 className='doctorName'>{name}</h3>
-                    <div className='doctorCard-information'>
-                        <div className='doctorSpecialty'>
-                            <FontAwesomeIcon icon={faStethoscope} style={{ color: "#ff8408", marginRight: "8px" }}/>
+        <div className='doctor'>
+            <div key={id} className='doctor__card'>
+                <img src={image} alt='doctor' className='doctor__img' />
+                <div className="doctor__text-container">
+                    <div className='doctor__text-container__name'>
+                        <span className='doctor__text-container__name__last'>{lastName}</span>{}
+                        <span className='doctor__text-container__name__first'>{firstNameAndPatronymic}</span>{}
+                    </div>
+                    <div className='doctor__text-container__information'>
+                        <div className='doctor__text-container__information__specialty'>
+                        <FontAwesomeIcon icon={faStethoscope} style={{ color: "#ff8408", marginRight: "8px" }}/>
                             {specialty}
                         </div>
-                        <div className='doctorLocation'>
-                            <FontAwesomeIcon icon={faLocationDot} style={{ color: "#ff8408", marginRight: "12px" }} />
+                        <div className='doctor__text-container__information__location'>
+                        <FontAwesomeIcon icon={faLocationDot} style={{ color: "#ff8408", marginRight: "12px" }} />
                             {location}
                         </div>
-                        <div className='doctorRatings'>
-                            <FontAwesomeIcon icon={faStar} style={{ color: "#ff8408", marginRight: "8px" }} />
+                        <div className='doctor__text-container__information__ratings'>
+                        <FontAwesomeIcon icon={faStar} style={{ color: "#ff8408", marginRight: "8px" }} />
                             {ratings}
                         </div>
-                        <div className='doctorWorkHours'>
-                            <FontAwesomeIcon icon={faClock} style={{color: "#ff8408", marginRight: "8px"}} />
+                        <div className='doctor__text-container__information__work-hours'>
+                        <FontAwesomeIcon icon={faClock} style={{color: "#ff8408", marginRight: "8px"}} />
                             {time}
                         </div>
                     </div>
-                    <div className='Doctor-signup'>
-                        <button onClick={handleAppointmentClick} className="appointment-button">Записатися</button>
-                        <button onClick={handleAppointmentClick} className="review-button">Залишити відгук</button>
+                    <div className='doctor__signup'>
+                        <button onClick={handleAppointmentClick} className="doctor__signup__appointment-button">Записатися</button>
+                        <button onClick={handleAppointmentClick} className="doctor__signup__review-button">Залишити відгук</button>
                     </div>
                 </div>
-                <img src={image} alt='doctor' className='doctor-img'></img>
             </div>
-            <div className='comment-section'>
-            <input 
-    type="text"
-    value={commenterName}
-    onChange={(e) => setCommenterName(e.target.value)}
-    placeholder="Ваше ім'я"
-    className="comment-input-name"
-/>
+            <div className='doctor__comment-section'>
                 <Rating onRate={handleRate} />
                 <textarea 
                     value={commentText}
                     onChange={(e) => setCommentText(e.target.value)}
                     placeholder="Залиште ваш коментар" 
-                    className="comment-input"
+                    className="doctor__comment-section__comment-input"
                 ></textarea>
-                <button onClick={handleCommentSubmit} className="submit-comment-button">Готово</button>
+                <button onClick={handleCommentSubmit} className="doctor__comment-section__submit-comment-button">Готово</button>
             </div>
-            <div className="comments-display">
-  {comments.map((comment, index) => (
-    <div key={index} className="comment-item">
-      <div>      
-      <p><b>{comment.name}</b><FontAwesomeIcon icon={faStar} style={{ color: "#ff8408", marginRight: "4px", }} /> 
-        <span> {comment.rating} / 5</span></p>
-        <p>{comment.text}</p>
-      </div>
-    </div>
-  ))}
-</div>
+            <div className="doctor__comments-display">
+                {comments.map((comment, index) => (
+                    <div key={index} className="doctor__comments-display__comment-item">
+                        <p><b>{comment.name}</b><FontAwesomeIcon icon={faStar} /> <span> {comment.rating} / 5</span></p>
+                        <p>{comment.text}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

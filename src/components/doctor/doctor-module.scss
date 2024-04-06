@@ -1,0 +1,116 @@
+.Grid {
+    background-color: #FFFEF9;
+    z-index: 1;
+}
+
+.doctor {
+    &__card {
+        display: flex;
+        justify-content: space-between; /* Ensures items are spaced out */
+        align-items: center; /* Aligns items vertically */
+        flex-direction: row-reverse; /* Reverses the order so image appears on the right */
+        z-index: 0;
+    }
+
+    &__img {
+        width: 35%;
+        border-radius: 5%;
+        margin-top: 8%;
+        margin-right: 7%;
+    
+    }
+
+    &__text-container {
+        margin-top: 12%;
+        &__name {
+            margin-left: 35%;
+            &__last {
+                display: block;
+                color: #0D6240;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        
+            &__first {
+                display: block;
+                color: #0D6240;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+
+        &__information {
+            color: gray;
+            font-size: 13px;
+            white-space: nowrap;
+            line-height: 1.5;
+            margin-left: 50%;
+            margin-top: 12%;
+
+            &__specialty, &__location, &__ratings, &__work-hours {
+                display: flex;
+                align-items: center;
+
+            }
+        }
+    }
+
+    &__signup {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12%;
+        margin-left: 60%;
+
+        &__appointment-button, &__review-button {
+            background-color: #0D6240;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 15px;
+            padding: 5px 30px;
+            white-space: nowrap;
+
+            &:first-child {
+                margin-right: 5%;
+            }
+        }
+    }
+
+    &__comment-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fffffff7;
+        border: 0.001px solid rgb(200, 200, 200);
+        padding: 40px;
+        border-radius: 15px;
+        width: 80%;
+        max-width: 650px;
+        z-index: 0;
+        margin-top: 8%;
+        margin-left: 18%;
+
+        &__comment-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+
+        &__submit-comment-button {
+            background-color: #0D6240;
+            color: white;
+            border: none;
+            padding: 5px 40px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 15px;
+            align-self: flex-end;
+        }
+    }
+
+}

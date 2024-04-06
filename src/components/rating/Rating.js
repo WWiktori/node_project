@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { Container, Radio, Rating } from "./RatingStyles";
+import "./RatingStyles.scss";
 
 const Rate = ({ onRate }) => {
   const [rate, setRate] = useState(0);
   
-
   const handleClick = (rating) => {
     setRate(rating);
-    onRate(rating); // Передаємо рейтинг в батьківський компонент
+    onRate(rating);
   };
 
   return (
-    <Container>
-	<span>Оцінка:</span>
+    <div className="rating">
+      <span>Оцінка:</span>
       {[...Array(5)].map((item, index) => {
         const givenRating = index + 1;
         return (
-          <label key={index}>
-            <Radio
+          <label key={index} className="rating__label">
+            <input
+              className="rating__radio"
               type="radio"
               value={givenRating}
               checked={givenRating === rate}
               onChange={() => handleClick(givenRating)}
             />
-            <Rating>
+            <div className="rating__star">
               <FaStar color={givenRating <= rate ? "#ffc107" : "rgb(192,192,192)"} />
-            </Rating>
+            </div>
           </label>
         );
       })}
-    </Container>
+    </div>
   );
 };
 
